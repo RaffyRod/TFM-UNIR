@@ -1,0 +1,82 @@
+
+
+<ion-content>
+  <h1 class="ion-padding">
+    Plataforma Inteligente de Búsqueda y Recomendación de Recetas Saludables
+  </h1>
+
+ <div style="display: flex;
+    justify-content: center;
+    align-items: center;">
+  <article class="box-container">
+
+    <section class="ion-padding">
+
+      <ion-item>
+        <ion-select aria-label="Fruit" interface="popover" value="nombre" #selector>
+          <ion-select-option value="nombre">Por Nombre</ion-select-option>
+          <ion-select-option value="precio">Por Precio</ion-select-option>
+          <ion-select-option value="cantidad calorica">Por cantidad calorica</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-searchbar placeholder="Búsqueda de recetas por {{selector.value}}"></ion-searchbar>
+
+    </section>
+
+    <section class="box-cards">
+
+      <ion-card *ngFor="let dish of dishes">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <ion-card-header>
+          <ion-card-title>
+            {{ dish.dishName }}
+          </ion-card-title>
+          <ion-card-subtitle>
+            Tiempo de elaboración {{ dish.cookingTotalTime }}
+          </ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          
+          <table class="box-table">
+
+              <tr>
+                <th>Tiempo total</th>
+                <td>{{ dish.cookingTotalTime }}</td>
+              </tr>
+              <tr>
+                <th>Porciones</th>
+                <td>{{ dish.portions }}</td>
+              </tr>
+              <tr>
+                <th>Costo total</th>
+                <td>{{ dish.totalCost }}</td>
+              </tr>
+              <tr>
+                <th>Carbohidratos (%)</th>
+                <td>{{ dish.totalCalories.carbsPercent }}</td>
+              </tr>
+
+              <tr>
+                <th>Grasas (%)</th>
+                <td>{{ dish.totalCalories.fatPercent }}</td>
+              </tr>
+
+              <tr>
+                <th>Proteínas (%)</th>
+                <td>{{ dish.totalCalories.proteinPercent }}</td>
+              </tr>
+
+          </table>
+
+        </ion-card-content>
+      </ion-card>
+      
+
+    </section>
+
+  </article>
+ </div>
+
+</ion-content>

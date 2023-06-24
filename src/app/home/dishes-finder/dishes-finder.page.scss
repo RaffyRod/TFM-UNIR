@@ -1,0 +1,27 @@
+.box-container {
+    max-width: 720px;
+}
+
+.box-cards {
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    ion-card {
+        max-width: 320px;
+    }
+}
+
+.box-table {
+    width: 100%;
+    tr {
+        td, th {
+           padding: 4px;
+           text-align: right;
+        }
+        
+        th {
+            text-align: left;
+            font-weight: 900;
+        }
+    }
+}
