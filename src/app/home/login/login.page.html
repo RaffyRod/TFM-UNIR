@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="box">
+
+    <h1 class="ion-padding">
+      Plataforma Inteligente de Búsqueda y Recomendación de Recetas Saludables
+    </h1>
+    
+    <ion-card class="login-box">
+      <ion-card-header>
+        <h1>Ingresar</h1>
+      </ion-card-header>
+      <ion-card-content>
+  
+        <ion-item>
+          <ion-label position="floating">
+            Email
+          </ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">
+            Contraseña
+          </ion-label>
+          <ion-input type="password">
+          </ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button slot="end" fill="clear" class="ion-no-margin">
+            ¿Olvidó su contraseña?
+          </ion-button>
+        </ion-item>
+        <br>
+        <br>
+        <ion-item lines="none">
+          <ion-button slot="start" [routerLink]="['/home/dishes-stats']">
+            Ingresar
+          </ion-button>
+          <ion-button slot="end" fill="clear">
+            Crear cuenta
+          </ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>

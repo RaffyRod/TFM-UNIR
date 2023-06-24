@@ -1,0 +1,25 @@
+.box {
+    max-width: 720px;
+    min-width: 320px;
+    margin: 16px;
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box-table {
+    margin: 16px;
+    tr {
+        td {
+           padding: 16px;
+           border: solid 1px rgba(100,100,255, 0.5);
+        }
+
+    }
+    tr:nth-child(odd) {
+        background-color: darkblue;
+    }
+}

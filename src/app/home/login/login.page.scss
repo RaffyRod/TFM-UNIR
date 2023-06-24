@@ -1,0 +1,22 @@
+.box {
+    display: flex;
+    height: 80vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title-box {
+    padding: 10px;
+}
+
+.login-box {
+    min-width: 320px;
+    max-width: 640px;
+}
+
+ion-input[type=password] {
+    display: flex;
+    flex-direction: row-reverse;
+}

@@ -1,0 +1,54 @@
+<ion-content>
+
+  <h1 class="ion-padding">Preferencias Comensal</h1>
+  
+  <article style="display: flex; justify-content: space-evenly; padding: 64px 16px;">
+
+    <article class="box-data">
+
+      <section class="box-identifier">
+        <span>Documento de identidad: {{ user?.documentID}}</span>
+        <span>Nombre: {{ user?.fullname}}</span>
+        <span>Usuario: {{ user?.username}}</span>
+      </section>
+  
+      <section>
+        <ion-item>
+          <ion-select aria-label="Fruit" interface="popover" [multiple]="true" [value]="user?.menuType">
+            <ion-select-option value="normal">Normal</ion-select-option>
+            <ion-select-option value="vegan">Vegano</ion-select-option>
+            <ion-select-option value="vegetarian">Vegetariano</ion-select-option>
+            <ion-select-option value="diet">Dieta</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </section>
+  
+      <section>
+        <ion-item>
+          <ion-input type="text" label="Alergias alimentarias" labelPlacement="floating" class="input-icon">
+            <ion-icon name="add-circle" size="large"></ion-icon>
+          </ion-input>
+        </ion-item>
+      </section>
+  
+      <section>
+        <ion-range labelPlacement="start" label="Preferencia de precio"></ion-range>
+      </section>
+  
+      <section>
+        <h3>Valor Nutricional(%)</h3>
+        <ion-range labelPlacement="start" label="Carbohidratos" [value]="user?.nutriotionalValue?.carbs"></ion-range>
+        <ion-range labelPlacement="start" label="Proteinas" [value]="user?.nutriotionalValue?.proteins"></ion-range>
+        <ion-range labelPlacement="start" label="Grasas" [value]="user?.nutriotionalValue?.fat"></ion-range>
+  
+      </section>
+  
+    </article>
+
+    <article>
+      <img alt="{{user?.fullname}}" src="{{user?.image}}" style="width: 260px;" />
+    </article>
+
+  </article>
+
+</ion-content>

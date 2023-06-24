@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" [routerLink]="['/home/dishes-stats']">
+        Dashboard
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/home/dishes-finder']">
+        Recetas
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/home/user-preference']">
+        Preferencias
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-avatar slot="end" class="ion-padding">
+      <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
