@@ -1,4 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+interface userPreferenceData {
+  documentID: string;
+  image: string;
+  fullname: string;
+  username: string;
+  menuType: string[];
+  allergies: never[];
+  pricePreference: null;
+  nutriotionalValue: {
+      carbs: number;
+      proteins: number;
+      fat: number;
+  };
+}
 
 @Component({
   selector: 'app-user-preference',
@@ -7,7 +21,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPreferencePage implements OnInit {
 
-  public user = {
+  public user : userPreferenceData | null = {
     documentID: '40345039395395035',
     image: 'https://ionicframework.com/docs/img/demos/avatar.svg',
     fullname: 'Otto Tito Rivas López',
