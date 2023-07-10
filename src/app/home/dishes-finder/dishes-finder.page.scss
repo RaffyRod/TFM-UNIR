@@ -1,14 +1,30 @@
 .box-container {
     max-width: 720px;
 }
+.container{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
 .box-cards {
     width: 100vw;
+    max-width: 110vw;;
     display: flex;
     flex-wrap: wrap;
     ion-card {
         max-width: 320px;
     }
+}
+
+.img-thumbnail{
+  border: 2px solid #C0C0C0;
+  padding: 5px;
+  max-width: 300px;
+  max-height: 200px;
+  width: 300px;
+  height: 200px;
+  align-items: center;
 }
 
 .box-table {
@@ -18,7 +34,7 @@
            padding: 4px;
            text-align: right;
         }
-        
+
         th {
             text-align: left;
             font-weight: 900;

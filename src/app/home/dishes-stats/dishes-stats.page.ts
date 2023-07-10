@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { MongoServiceService } from 'src/app/mongo-service.service';
 
 @Component({
   selector: 'app-dishes-stats',
@@ -8,47 +9,48 @@ import Chart from 'chart.js/auto';
 })
 export class DishesStatsPage implements OnInit {
 
-  public linearDishesByCalories: any = null;
-  public pieDishesByPrice: any = null;
-  public pie2DishesByNutrition: any = null;
+  public linearDishesByCalories: any;
+  public pieDishesByPrice: any;
+  public pie2DishesByNutrition: any;
+  public recetas: any;
 
-  constructor() { }
+  constructor(public recetasDB: MongoServiceService) { }
 
-  ngOnInit() {
+  getDashInfo(){
 
-    const data = {
-      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
-      datasets: [{
-        label: 'My First Dataset',
-        data: [65, 59, 80, 81, 56, 55, 40],
-        fill: false,
-        borderColor: 'rgb(175, 192, 92)',
-        tension: 0.1
-      }, {
-        label: 'My Second Dataset',
-        data: [20, 25, 30, 35, 40, 55, 70],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-      }]
-    };
+      this.recetasDB.getDashBoard().then(data => {
+        this.recetas = data;
+        this.getPieChart(this.recetas);
+      })
 
-    this.linearDishesByCalories = new Chart(document.getElementById('linear-dishes-by-calories') as HTMLCanvasElement, {
-      type: 'line',
-      data
+
+
+
+
+  }
+
+  getPieChart(recetas:any){
+    let tiempos:any = [];
+    let labels:any = []
+
+    recetas.forEach((receta:any) => {
+
+      tiempos.push(receta.tiempo_m)
+      labels.push(receta.Nombre_receta)
+
     });
 
     const data2 = {
-      labels: [
-        'Red',
-        'Blue'
-      ],
+      labels: labels,
       datasets: [{
-        label: 'My First Dataset',
-        data: [300, 50],
+        label: '',
+        data: tiempos,
         backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
+          'red',
+          'blue',
+          'orange',
+          'purple',
+          'gray'
         ],
         hoverOffset: 4
       }]
@@ -58,11 +60,10 @@ export class DishesStatsPage implements OnInit {
       type: 'pie',
       data: data2
     });
+  }
 
-    this.pie2DishesByNutrition = new Chart(document.getElementById('circle2-dishes-by-calories') as HTMLCanvasElement, {
-      type: 'pie',
-      data: data2
-    });
+  ngOnInit() {
+    this.getDashInfo();
 
   }
 

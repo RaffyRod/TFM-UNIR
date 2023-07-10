@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MongoServiceService } from 'src/app/mongo-service.service';
 
 @Component({
   selector: 'app-dishes-finder',
@@ -7,51 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DishesFinderPage implements OnInit {
 
-  public dishes = [
-    {
-      "dishName": "Chicken Stir Fried",
-      "cookingTime": "20 minutos",
-      "cookingTotalTime": "25 minutos",
-      "portions": 4,
-      "totalCost": "$14.00",
-      "totalCalories": {
-        "carbsPercent": 50,
-        "fatPercent": 30,
-        "proteinPercent": 20
-      },
-      "image": "https://example.com/chicken_stir_fried.jpg"
-    },
-    {
-      "dishName": "Jambalaya",
-      "cookingTime": "35 minutos",
-      "cookingTotalTime": "40 minutos",
-      "portions": 6,
-      "totalCost": "$31.50",
-      "totalCalories": {
-        "carbsPercent": 60,
-        "fatPercent": 25,
-        "proteinPercent": 15
-      },
-      "image": "https://example.com/jambalaya.jpg"
-    },
-    {
-      "dishName": "Chicken Marsala",
-      "cookingTime": "30 minutos",
-      "cookingTotalTime": "35 minutos",
-      "portions": 3,
-      "totalCost": "$14.25",
-      "totalCalories": {
-        "carbsPercent": 45,
-        "fatPercent": 35,
-        "proteinPercent": 20
-      },
-      "image": "https://example.com/chicken_marsala.jpg"
-    }
-  ]
+  public platos:any;
 
-  constructor() { }
+  public findBar: any;
+
+  public dishes: any;
+
+
+  constructor(public recetasDB: MongoServiceService) { }
 
   ngOnInit() {
+    this.getRecetas();
   }
 
+  filtrarRecetas(){
+    this.platos = this.dishes;
+    let filtrados = [];
+    filtrados = this.platos.filter((plato: { Nombre_receta: string })=>plato.Nombre_receta.toLowerCase().includes(this.findBar.toLowerCase()))
+    this.platos = filtrados;
+  }
+
+
+
+  getRecetas(){
+    this.recetasDB.getRecetas().then(data => {
+      this.platos = data;
+      this.dishes = data;
+    })
+
+  }
 }
