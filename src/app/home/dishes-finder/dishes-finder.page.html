@@ -1,13 +1,11 @@
 
 
-<ion-content>
-  <h1 class="ion-padding">
+<ion-content class="center">
+  <h1 class="ion-padding container">
     Plataforma Inteligente de Búsqueda y Recomendación de Recetas Saludables
   </h1>
 
- <div style="display: flex;
-    justify-content: center;
-    align-items: center;">
+ <div class="container">
   <article class="box-container">
 
     <section class="ion-padding">
@@ -15,64 +13,62 @@
       <ion-item>
         <ion-select aria-label="Fruit" interface="popover" value="nombre" #selector>
           <ion-select-option value="nombre">Por Nombre</ion-select-option>
-          <ion-select-option value="precio">Por Precio</ion-select-option>
-          <ion-select-option value="cantidad calorica">Por cantidad calorica</ion-select-option>
+          <!-- <ion-select-option value="precio">Por Precio</ion-select-option>
+          <ion-select-option value="cantidad calorica">Por cantidad calorica</ion-select-option> -->
         </ion-select>
       </ion-item>
 
-      <ion-searchbar placeholder="Búsqueda de recetas por {{selector.value}}"></ion-searchbar>
+      <ion-searchbar  placeholder="Búsqueda de recetas por {{selector.value}}" [(ngModel)]="findBar" (ngModelChange)="filtrarRecetas()"></ion-searchbar>
 
     </section>
 
     <section class="box-cards">
 
-      <ion-card *ngFor="let dish of dishes">
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <ion-card *ngFor="let dish of platos">
+
+        <img alt="Silhouette of mountains" src="{{dish.foto_plato}}" class="img-thumbnail"/>
         <ion-card-header>
           <ion-card-title>
-            {{ dish.dishName }}
+            {{ dish.Nombre_receta}}
           </ion-card-title>
           <ion-card-subtitle>
-            Tiempo de elaboración {{ dish.cookingTotalTime }}
+            Tiempo de elaboración: <strong>{{ dish.Tiempo_Preparacion }}</strong>
           </ion-card-subtitle>
         </ion-card-header>
-      
+
         <ion-card-content>
-          
+
           <table class="box-table">
 
               <tr>
-                <th>Tiempo total</th>
-                <td>{{ dish.cookingTotalTime }}</td>
+                <th>Energia (kcals)</th>
+                <td>{{
+                  dish.Energia_Kcal
+                }}</td>
               </tr>
               <tr>
-                <th>Porciones</th>
-                <td>{{ dish.portions }}</td>
+                <th>Carbohidratos</th>
+                <td>{{
+                  dish.Hidratos_de_carbano_g
+                }}</td>
               </tr>
               <tr>
-                <th>Costo total</th>
-                <td>{{ dish.totalCost }}</td>
+                <th>Proteínas</th>
+                <td>{{
+                  dish.Proteinas_g
+                }}</td>
               </tr>
               <tr>
-                <th>Carbohidratos (%)</th>
-                <td>{{ dish.totalCalories.carbsPercent }}</td>
-              </tr>
-
-              <tr>
-                <th>Grasas (%)</th>
-                <td>{{ dish.totalCalories.fatPercent }}</td>
-              </tr>
-
-              <tr>
-                <th>Proteínas (%)</th>
-                <td>{{ dish.totalCalories.proteinPercent }}</td>
+                <th>Lípidos</th>
+                <td>
+                  {{ dish.Lipidos_g}}
+                </td>
               </tr>
 
           </table>
 
         </ion-card-content>
       </ion-card>
-      
 
     </section>
 

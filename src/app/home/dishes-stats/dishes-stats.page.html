@@ -1,17 +1,17 @@
 <ion-content>
 
-  <h1 class="ion-padding">
+  <h1 class="ion-padding container">
     Plataforma Inteligente de Búsqueda y Recomendación de Recetas Saludables
   </h1>
 
-  <article class="box-container">
-    <section class="box">
+  <article class=" container">
+    <!-- <section class="box">
       <h2>Top 5 mejores recetas por calorias</h2>
       <canvas id="linear-dishes-by-calories"></canvas>
-    </section>
+    </section> -->
 
     <section class="box">
-      <h2>Top 5 recetas con mejores precios</h2>
+      <h2>Top 5 mejores recetas por tiempo de preparacion</h2>
       <canvas id="circle-dishes-by-calories"></canvas>
     </section>
 
@@ -21,45 +21,35 @@
           <td>Nombre</td>
           <td>Tiempo total</td>
           <td>Porciones</td>
-          <td>Costo Porcione</td>
+          <td>Costo Porciones</td>
           <td>Costo total</td>
           <td>Total calorias</td>
         </tr>
-        <tr>
-          <td>Chicken Stir Fried</td>
-          <td>25 minutos</td>
-          <td>4</td>
-          <td>$3.50</td>
-          <td>$14.00</td>
-          <td>400</td>
-        </tr>
-        <tr>
-          <td>Jambalaya</td>
-          <td>40 minutos</td>
-          <td>6</td>
-          <td>$5.25</td>
-          <td>$31.50</td>
-          <td>550</td>
-        </tr>
-        <tr>
-          <td>Chicken Marsala</td>
-          <td>35 minutos</td>
-          <td>3</td>
-          <td>$4.75</td>
-          <td>$14.25</td>
-          <td>320</td>
+        <tr *ngFor="let receta of recetas">
+          <td>
+            {{receta.Nombre_receta}}
+          </td>
+          <td>
+            {{receta.Tiempo_Preparacion}}
+          </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>
+            {{receta.Energia_Kcal}}
+          </td>
         </tr>
       </table>
     </section>
 
-    <section>
+    <!-- <section>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/5dybdeTylz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </section>
+    </section> -->
 
-    <section class="box">
+    <!-- <section class="box">
       <h2>Información Nutricional por receta</h2>
       <canvas id="circle2-dishes-by-calories"></canvas>
-    </section>
+    </section> -->
 
   </article>
 
