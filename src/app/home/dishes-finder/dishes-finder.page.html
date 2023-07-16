@@ -24,55 +24,101 @@
 
     <section class="box-cards">
 
-      <ion-card *ngFor="let dish of platos">
+      <div class="cardSpace" *ngFor="let dish of platos">
+        <ion-card >
 
-        <img alt="Silhouette of mountains" src="{{dish.foto_plato}}" class="img-thumbnail"/>
-        <ion-card-header>
-          <ion-card-title>
-            {{ dish.Nombre_receta}}
-          </ion-card-title>
-          <ion-card-subtitle>
-            Tiempo de elaboración: <strong>{{ dish.Tiempo_Preparacion }}</strong>
-          </ion-card-subtitle>
-        </ion-card-header>
+          <img alt="Silhouette of mountains" src="{{dish.foto_plato}}" class="img-thumbnail"/>
+          <ion-card-header>
+            <ion-card-title>
+              {{ cortarTitulo(dish.Nombre_receta)}}
+            </ion-card-title>
+            <ion-card-subtitle>
+              Tiempo de elaboración: <strong>{{ dish.Tiempo_Preparacion }}</strong>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <table class="box-table">
+                <tr>
+                  <th>Energia (kcals)</th>
+                  <td>{{dish.Energia_Kcal}}</td>
+                </tr>
+                <tr>
+                  <th>Carbohidratos</th>
+                  <td>{{
+                    dish.Hidratos_de_carbano_g
+                  }}</td>
+                </tr>
+                <tr>
+                  <th>Proteínas</th>
+                  <td>{{
+                    dish.Proteinas_g
+                  }}</td>
+                </tr>
+                <tr>
+                  <th>Lípidos</th>
+                  <td>
+                    {{ dish.Lipidos_g}}
+                  </td>
+                </tr>
+            </table>
+          </ion-card-content>
+        </ion-card>
+        <ion-button class="btn-fit" expand="block" (click)="abrirModal(dish)"><ion-icon name="document-text-sharp"></ion-icon></ion-button>
+      </div>
 
+    </section>
+  </article>
+ </div>
+ <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)" [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>{{plato.Nombre_receta}}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="cancel()"><ion-icon name="close-circle-sharp"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-card>
         <ion-card-content>
-
           <table class="box-table">
+            <tr>
+              <td class="text-center">
+                <img alt="{{plato.Nombre_receta}}" src="{{plato.foto_plato}}" class="img-thumbnail-modal"/>
+              </td>
+              <td class="text-center">{{ "wao" }}</td>
+            </tr>
 
-              <tr>
-                <th>Energia (kcals)</th>
-                <td>{{
-                  dish.Energia_Kcal
-                }}</td>
-              </tr>
-              <tr>
-                <th>Carbohidratos</th>
-                <td>{{
-                  dish.Hidratos_de_carbano_g
-                }}</td>
-              </tr>
-              <tr>
-                <th>Proteínas</th>
-                <td>{{
-                  dish.Proteinas_g
-                }}</td>
-              </tr>
-              <tr>
-                <th>Lípidos</th>
-                <td>
-                  {{ dish.Lipidos_g}}
-                </td>
-              </tr>
-
-          </table>
+        </table>
 
         </ion-card-content>
       </ion-card>
+      <ion-card >
+        <ion-card-content>
+          <table class="box-table">
+              <tr>
+                <th class="text-center">Energia (kcals)</th>
+                <th class="text-center">Carbohidratos</th>
+                <th class="text-center">Proteínas</th>
+                <th class="text-center">Lípidos</th>
+              </tr>
+              <tr>
+                <td class="text-center colored1">{{ plato.Energia_Kcal }}</td>
+                <td class="text-center colored1">{{ plato.Hidratos_de_carbano_g }}</td>
+                <td class="text-center colored1">{{ plato.Proteinas_g }}</td>
+                <td class="text-center colored1">{{ plato.Lipidos_g }}</td>
+              </tr>
 
-    </section>
+          </table>
+        </ion-card-content>
+      </ion-card>
 
-  </article>
- </div>
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
 
 </ion-content>
