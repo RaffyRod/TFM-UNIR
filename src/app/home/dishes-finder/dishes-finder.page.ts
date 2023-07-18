@@ -36,18 +36,17 @@ export class DishesFinderPage implements OnInit {
   abrirModal(receta:any){
     this.setOpen(true);
     this.plato = receta;
+    this.plato.Entrada.ingredientesCantidad = [];
+    this.plato.Entrada.preparacion = this.plato.Entrada.Preparación;
+    receta.Entrada.Ingredientes.forEach((ingrediente:string,key:number) => {
+      let concatenacion = receta.Entrada.Cantidad[key]+' de '+ingrediente;
+      this.plato.Entrada.ingredientesCantidad.push(concatenacion);
+    });
     console.log(this.plato)
   }
   onWillDismiss(event: Event) {
     this.setOpen(false);
-    // const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    // if (ev.detail.role === 'confirm') {
-    //   // this.message = `Hello, ${ev.detail.data}!`;
-    // }
   }
-
-
-
 
   constructor(public recetasDB: MongoServiceService) { }
 

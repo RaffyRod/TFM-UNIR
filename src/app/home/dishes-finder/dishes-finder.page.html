@@ -13,11 +13,8 @@
       <ion-item>
         <ion-select aria-label="Fruit" interface="popover" value="nombre" #selector>
           <ion-select-option value="nombre">Por Nombre</ion-select-option>
-          <!-- <ion-select-option value="precio">Por Precio</ion-select-option>
-          <ion-select-option value="cantidad calorica">Por cantidad calorica</ion-select-option> -->
         </ion-select>
       </ion-item>
-
       <ion-searchbar  placeholder="Búsqueda de recetas por {{selector.value}}" [(ngModel)]="findBar" (ngModelChange)="filtrarRecetas()"></ion-searchbar>
 
     </section>
@@ -26,7 +23,6 @@
 
       <div class="cardSpace" *ngFor="let dish of platos">
         <ion-card >
-
           <img alt="Silhouette of mountains" src="{{dish.foto_plato}}" class="img-thumbnail"/>
           <ion-card-header>
             <ion-card-title>
@@ -81,21 +77,8 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <ion-card>
-        <ion-card-content>
-          <table class="box-table">
-            <tr>
-              <td class="text-center">
-                <img alt="{{plato.Nombre_receta}}" src="{{plato.foto_plato}}" class="img-thumbnail-modal"/>
-              </td>
-              <td class="text-center">{{ "wao" }}</td>
-            </tr>
-
-        </table>
-
-        </ion-card-content>
-      </ion-card>
       <ion-card >
+        <ion-card-header><b>Datos de Nutricion</b></ion-card-header>
         <ion-card-content>
           <table class="box-table">
               <tr>
@@ -110,8 +93,37 @@
                 <td class="text-center colored1">{{ plato.Proteinas_g }}</td>
                 <td class="text-center colored1">{{ plato.Lipidos_g }}</td>
               </tr>
-
           </table>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header><b>Receta</b></ion-card-header>
+        <ion-card-content>
+          <div class="container">
+            <div class="leftPhoto">
+              <img alt="{{plato.Nombre_receta}}" src="{{plato.foto_plato}}" class="img-thumbnail-modal"/>
+            </div>
+            <div class="rightText">
+              <ul class="listaStyle" *ngIf="plato.Entrada.Ingredientes.length > 0">
+                <h3 class="ingredientesTitulo"><b>Ingredientes: </b></h3>
+                <li *ngFor="let ingrediente  of plato.Entrada.ingredientesCantidad" class="ingrediente">
+                  {{ingrediente}}
+                </li>
+              </ul>
+              <p *ngIf="plato.Entrada.Ingredientes.length < 1" class="ingredientesTitulo">No tiene ingredientes</p>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-card-header><b>Preparación</b></ion-card-header>
+          <ol *ngIf="plato.Entrada.preparacion.length > 0">
+            <li *ngFor="let paso  of plato.Entrada.preparacion" class="ingrediente">
+              {{paso}}
+            </li>
+          </ol>
+          <p *ngIf="plato.Entrada.preparacion.length < 1" class="ingredientesTitulo">No tiene pasos de Preparación</p>
         </ion-card-content>
       </ion-card>
 
