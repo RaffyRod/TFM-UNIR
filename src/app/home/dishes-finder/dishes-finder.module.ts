@@ -8,13 +8,20 @@ import { DishesFinderPageRoutingModule } from './dishes-finder-routing.module';
 
 import { DishesFinderPage } from './dishes-finder.page';
 
+import { PlateFormComponent } from '../plate-form/plate-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DishesFinderPageRoutingModule
+    DishesFinderPageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [DishesFinderPage]
+  declarations: [
+    DishesFinderPage,
+    PlateFormComponent
+  ]
 })
 export class DishesFinderPageModule {}
