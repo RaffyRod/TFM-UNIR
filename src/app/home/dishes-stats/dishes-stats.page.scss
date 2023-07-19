@@ -16,7 +16,12 @@
   margin-right: 10%;
 }
 
+.tableContainer {
+  overflow-x: auto;
+}
+
 .box-table {
+
     margin: 16px;
     tr {
         td {
