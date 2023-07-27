@@ -15,29 +15,32 @@
       <canvas id="circle-dishes-by-calories"></canvas>
     </section>
 
-    <section>
+    <section class="tableContainer">
+
       <table class="box-table">
         <tr style="font-weight: bold;">
           <td>Nombre</td>
           <td>Tiempo total</td>
+          <td>Total calorias</td>
           <td>Porciones</td>
           <td>Costo Porciones</td>
           <td>Costo total</td>
-          <td>Total calorias</td>
+
         </tr>
         <tr *ngFor="let receta of recetas">
           <td>
-            {{receta.Nombre_receta}}
+            {{receta.Receta.Nombre_receta}}
           </td>
           <td>
             {{receta.Tiempo_Preparacion}}
           </td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
           <td>
             {{receta.Energia_Kcal}}
           </td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+
         </tr>
       </table>
     </section>

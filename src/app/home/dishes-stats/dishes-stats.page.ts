@@ -36,7 +36,7 @@ export class DishesStatsPage implements OnInit {
     recetas.forEach((receta:any) => {
 
       tiempos.push(receta.tiempo_m)
-      labels.push(receta.Nombre_receta)
+      labels.push(receta.Receta.Nombre_receta)
 
     });
 
