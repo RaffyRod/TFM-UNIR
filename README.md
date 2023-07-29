@@ -48,3 +48,5 @@ Luego de haber instalado todas las dependencias y paquetes, para poder ejecutar 
 Ionic serve
 ```
 Lo cual nos permitira ver nuestra aplicacion desde nuestro navegador.
+
+> Actualmente el proyecto se encuentra desplegado en la siguiente URL: https://proyectosingmx.com/#/home/dishes-stats
